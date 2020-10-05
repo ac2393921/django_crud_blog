@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      {% if object %}
+      <legend class="border-bottom mb-4">更新</legend>
+      {% else %}
+      <legend class="border-bottom mb-4">新規投稿</legend>
+      {% endif %}
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">投稿</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}
